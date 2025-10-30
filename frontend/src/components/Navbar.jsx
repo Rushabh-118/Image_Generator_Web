@@ -13,8 +13,8 @@ const Navbar = () => {
             <div className="w-full px-0">
                 <div className="flex items-center justify-between py-4 px-0">
                     {/* Logo Section */}
-                    <div className="flex items-center gap-3 cursor-pointer group">
-                        <Link to="/">
+                    <div className="flex items-center cursor-pointer group">
+                        <Link to="/" className="flex items-center">
                             <div className="flex items-center" style={{ filter: 'drop-shadow(0 0 10px rgba(59, 130, 246, 0.3))' }}>
                                 <svg
                                     width="40"
@@ -33,17 +33,16 @@ const Navbar = () => {
                                     <line x1="140" y1="60" x2="60" y2="140" stroke="#6366F1" strokeWidth="4" className="animate-dash"/>   
                                 </svg>
                             </div>
-                        </Link>
-                        
-                        <div className="flex items-center">
-                            <span className="text-2xl sm:text-3xl font-bold relative">
-                                <span className="bg-linear-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">
-                                    Visgen
+                            <div className="flex items-center ml-2">
+                                <span className="text-2xl sm:text-3xl font-bold relative">
+                                    <span className="bg-linear-to-r from-indigo-600 to-blue-500 bg-clip-text text-transparent">
+                                        Visgen
+                                    </span>
+                                    <span className="text-blue-500 font-extrabold">.AI</span>
+                                    <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-ping"/>
                                 </span>
-                                <span className="text-blue-500 font-extrabold">.AI</span>
-                                <span className="absolute -top-1 -right-1 w-2 h-2 bg-blue-500 rounded-full animate-ping"/>
-                            </span>
-                        </div>
+                            </div>
+                        </Link>
                     </div>
 
                     {/* Navigation Section */}
