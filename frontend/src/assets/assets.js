@@ -34,7 +34,10 @@ export const assets = {
     cross_icon,
     star_group,
     credit_star,
-    profile_icon
+    profile_icon,
+    step_icon_1,
+    step_icon_2,
+    step_icon_3
 }
 
 export const stepsData = [
