@@ -5,3 +5,8 @@
   font-family: "Outfit", sans-serif;
   font-optical-sizing: auto;
 }
+
+/* Ensure the site uses the full viewport width (remove browser default body margin) */
+body {
+  margin: 0;
+}
