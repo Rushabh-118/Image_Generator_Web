@@ -9,7 +9,7 @@ const Navbar = () => {
     const navigate = useNavigate()
 
     return (
-        <nav className="bg-white/80 px-20 backdrop-blur-lg border-b border-gray-100 sticky top-0 z-50">
+        <nav className=" bg-transparent px-20 backdrop-blur-lg sticky top-0 z-50">
             <div className="w-full px-0">
                 <div className="flex items-center justify-between py-4 px-0">
                     {/* Logo Section */}
@@ -116,7 +116,7 @@ const Navbar = () => {
                                 {/* Pricing Link */}
                                 <button 
                                     onClick={() => navigate('/buy')}
-                                    className="text-sm md:text-base font-medium text-gray-600 hover:text-indigo-600 transition-colors duration-200 hover:scale-105 transform hidden sm:block"
+                                    className="text-sm md:text-base font-medium text-gray-900 hover:text-indigo-600 transition-colors duration-200 hover:scale-105 transform hidden sm:block"
                                 >
                                     Pricing
                                 </button>
