@@ -1,7 +1,9 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate()
   return (
     <div className="relative h-screen w-screen bg-linear-to-br from-slate-900 via-purple-900 to-slate-900 overflow-hidden">
       {/* Animated Background Elements */}
@@ -67,8 +69,9 @@ const Header = () => {
                   />
                 </svg>
                 <div className="flex items-center gap-3">
-                  <span className="bg-linear-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent font-bold text-lg tracking-wide relative">
-                    Generate Image
+                  <span 
+                  className="bg-linear-to-r from-white via-cyan-200 to-blue-200 bg-clip-text text-transparent font-bold text-lg tracking-wide relative">
+                   <button onClick={()=> navigate('/result')}>Generate Image</button> 
                     {/* Floating star particles */}
                     <div className="absolute -top-3 -right-6">
                       <div className="relative">
