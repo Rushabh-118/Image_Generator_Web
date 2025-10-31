@@ -5,7 +5,7 @@ import { AppContext } from '../context/AppContext'
 
 const Navbar = () => {
     const [showDropdown, setShowDropdown] = useState(false)
-    const {user, setShowLogin} = useContext(AppContext)
+    const {user, setShowLogin, logout, credits} = useContext(AppContext)
     const navigate = useNavigate()
 
     return (
@@ -57,7 +57,7 @@ const Navbar = () => {
                                         alt="Credits" 
                                     />
                                     <span className="text-sm font-semibold whitespace-nowrap">
-                                        Credits: <span className="text-amber-100">50</span>
+                                        Credits: <span className="text-amber-100">{credits}</span>
                                     </span>
                                 </button>
 
@@ -89,15 +89,11 @@ const Navbar = () => {
                                             ></div>
                                             <div className="absolute right-0 mt-3 w-48 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-gray-200 py-2 z-50 animate-in fade-in slide-in-from-top-5 duration-200">
                                                 <div className="px-4 py-2 border-b border-gray-100">
-                                                    <p className="text-sm font-semibold text-gray-900">Rushabh</p>
-                                                    <p className="text-xs text-gray-500">Premium User</p>
+                                                    <p className="text-sm font-semibold text-gray-900">{user.name}</p>
                                                 </div>
                                                 <div className="py-2">
                                                     <button 
-                                                        onClick={() => {
-                                                            setShowDropdown(false)
-                                                            // Add logout logic here
-                                                        }}
+                                                        onClick={logout}
                                                         className="w-full px-4 py-2 text-left text-sm text-red-600 hover:bg-red-50 transition-colors duration-150 flex items-center gap-2"
                                                     >
                                                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

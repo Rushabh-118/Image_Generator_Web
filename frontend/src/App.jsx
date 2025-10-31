@@ -7,6 +7,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Login from './components/Login'
 import { AppContext } from './context/AppContext'
+import { ToastContainer, toast } from 'react-toastify';
 
 const App = () => {
 
@@ -14,6 +15,7 @@ const App = () => {
 
   return (
     <div className='min-h-screen bg-linear-to-b from-teal-50 to-orange-50'>
+      <ToastContainer position='top-right' />
       <Navbar />
       {showLogin && <Login />}
       <Routes>

@@ -8,6 +8,6 @@ userRouter.post("/register", registerUser);
 // localhost:4000/api/user/login
 userRouter.post("/login", loginUser);
 // localhost:4000/api/user/credits
-userRouter.post("/credits",authMiddleware ,userCredits);
-
+userRouter.get("/credits",authMiddleware ,userCredits);
+    
 export default userRouter;

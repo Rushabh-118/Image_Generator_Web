@@ -1,10 +1,51 @@
 import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [state, setState] = useState("login");
-  const { setShowLogin } = useContext(AppContext);
+  const { setShowLogin , backendUrl , setToken, setUser} = useContext(AppContext);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onsubmitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      if(state === "login"){
+        const {data} = await axios.post(backendUrl + "/api/user/login", {
+          email,
+          password
+        })
+        if(data.success) {
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem("token", data.token);
+          setShowLogin(false);
+        } else {
+          toast.error(data.message);
+        }
+      } else {
+        const {data} = await axios.post(backendUrl + "/api/user/register", {
+          name,
+          email,
+          password
+        })
+        if(data.success) {
+          setToken(data.token);
+          setUser(data.user);
+          localStorage.setItem("token", data.token);
+          setShowLogin(false);
+        } else {
+          toast.error(data.message);
+        }
+      }
+    } catch (error) { 
+      toast.error("Something went wrong. Please try again later.");
+    }
+  }
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -15,7 +56,8 @@ const Login = () => {
 
   return (
     <div className="absolute top-0 left-0 right-0 bottom-0 z-100 backdrop-blur-sm bg-black/30 flex justify-center items-center">
-      <form className="relative flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white">
+      <form onSubmit={onsubmitHandler}
+       className="relative flex flex-col gap-4 m-auto items-start p-8 py-12 w-80 sm:w-[352px] text-gray-500 rounded-lg shadow-xl border border-gray-200 bg-white">
         <p className="text-2xl font-medium m-auto">
           <span className="text-indigo-500">User</span>{" "}
           {state === "login" ? "Login" : "Sign Up"}
@@ -30,6 +72,7 @@ const Login = () => {
           <div className="w-full">
             <p>Name</p>
             <input
+              onChange={e => setName(e.target.value)} value={name}
               placeholder="type here"
               className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
               type="text"
@@ -40,6 +83,7 @@ const Login = () => {
         <div className="w-full ">
           <p>Email</p>
           <input
+            onChange={e => setEmail(e.target.value)} value={email}
             placeholder="type here"
             className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
             type="email"
@@ -49,6 +93,7 @@ const Login = () => {
         <div className="w-full ">
           <p>Password</p>
           <input
+            onChange={e => setPassword(e.target.value)} value={password}
             placeholder="type here"
             className="border border-gray-200 rounded w-full p-2 mt-1 outline-indigo-500"
             type="password"
