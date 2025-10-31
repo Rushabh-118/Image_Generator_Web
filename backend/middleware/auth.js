@@ -9,8 +9,6 @@ export const authMiddleware = (req, res, next) => {
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
         if (decoded && decoded.id) {
-            // Avoid mutating req.body which may be undefined for some requests.
-            // Attach authenticated user id to req.userId instead.
             req.userId = decoded.id;
         } else {
             return res.status(401).json({ success: false, message: "Token is not valid" });
